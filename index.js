@@ -116,5 +116,25 @@ fundedBtn.addEventListener("click", filterFundedOnly);
 allBtn.addEventListener("click", showAllGames);
 
 /*************************************************************************************
- * Challenge 6–7 will be implemented next
+ * Challenge 6: Add more information at the top of the page about the company.
+ * Skills used: template literals, ternary operator
+*/
+
+// grab the description container
+const descriptionContainer = document.getElementById("description-container");
+
+// use filter() to count the number of unfunded games
+const numUnfunded = GAMES_JSON.filter(game => game.pledged < game.goal).length;
+
+// create a string that explains the number of unfunded games using the ternary operator
+const displayStr = `A total of $${totalRaised.toLocaleString()} has been raised for ${GAMES_JSON.length} games. 
+Currently, ${numUnfunded} game${numUnfunded === 1 ? "" : "s"} remain unfunded. We need your help to fund these amazing games!`;
+
+// create a new DOM element containing the template string and append it to the description container
+const newParagraph = document.createElement("p");
+newParagraph.textContent = displayStr;
+descriptionContainer.appendChild(newParagraph);
+
+/*************************************************************************************
+ * Challenge 7 will be implemented next
  */
