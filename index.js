@@ -135,6 +135,26 @@ const newParagraph = document.createElement("p");
 newParagraph.textContent = displayStr;
 descriptionContainer.appendChild(newParagraph);
 
-/*************************************************************************************
- * Challenge 7 will be implemented next
+/************************************************************************************
+ * Challenge 7: Select & display the top 2 games
+ * Skills used: spread operator, destructuring, template literals, sort 
  */
+
+const firstGameContainer = document.getElementById("first-game");
+const secondGameContainer = document.getElementById("second-game");
+
+// sort games by highest pledged amount
+const sortedGames = [...GAMES_JSON].sort((a, b) => b.pledged - a.pledged);
+
+// use destructuring to get the top 2
+const [topGame, runnerUp] = sortedGames;
+
+// create elements for the top and runner-up games
+const topGameElement = document.createElement("p");
+topGameElement.textContent = topGame.name;
+firstGameContainer.appendChild(topGameElement);
+
+const runnerUpElement = document.createElement("p");
+runnerUpElement.textContent = runnerUp.name;
+secondGameContainer.appendChild(runnerUpElement);
+
