@@ -78,5 +78,43 @@ const gamesCard = document.getElementById("num-games");
 gamesCard.innerHTML = GAMES_JSON.length;
 
 /*************************************************************************************
- * Challenge 5–7 will be implemented next
+ * Challenge 5: Add functions to filter the funded and unfunded games
+ * Skills used: functions, filter
+*/
+
+// show only games that do not yet have enough funding
+function filterUnfundedOnly() {
+    deleteChildElements(gamesContainer);
+
+    const unfundedGames = GAMES_JSON.filter(game => game.pledged < game.goal);
+    addGamesToPage(unfundedGames);
+}
+
+// show only games that are fully funded
+function filterFundedOnly() {
+    deleteChildElements(gamesContainer);
+
+    const fundedGames = GAMES_JSON.filter(game => game.pledged >= game.goal);
+    addGamesToPage(fundedGames);
+}
+
+// show all games
+function showAllGames() {
+    deleteChildElements(gamesContainer);
+
+    addGamesToPage(GAMES_JSON);
+}
+
+// select each button in the "Our Games" section
+const unfundedBtn = document.getElementById("unfunded-btn");
+const fundedBtn = document.getElementById("funded-btn");
+const allBtn = document.getElementById("all-btn");
+
+// add event listeners with the correct functions to each button
+unfundedBtn.addEventListener("click", filterUnfundedOnly);
+fundedBtn.addEventListener("click", filterFundedOnly);
+allBtn.addEventListener("click", showAllGames);
+
+/*************************************************************************************
+ * Challenge 6–7 will be implemented next
  */
